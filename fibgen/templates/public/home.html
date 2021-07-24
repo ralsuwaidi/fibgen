@@ -1,35 +1,24 @@
-
 {% extends "layout.html" %}
 {% block content %}
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-    
-      <h1 class="display-3">Welcome to fibgen</h1>
-    
-      <p>This is a starter Flask template. It includes Bootstrap 4, jQuery 3, Flask-SQLAlchemy, WTForms, and various testing utilities out of the box.</p>
-      <p><a href="https://github.com/cookiecutter-flask/cookiecutter-flask" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-    </div>
-</div><!-- /.jumbotron -->
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <h2><i class="fa fa-code"></i> Bootstrap 4</h2>
-      <p>Sleek, intuitive, and powerful mobile-first front-end framework for faster and easier web development.</p>
-      <p><a class="btn btn-outline-secondary" href="http://getbootstrap.com/">Official website &raquo;</a></p>
+
+<div class="container " style="width: 50rem;">
+  <div class="card m-3 align-middle">
+    <div class="card-body">
+      <form class="form-inline" id="loginForm" method="POST" action="{{ url_for('public.home') }}" role="login">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-    <div class="col-lg-4">
-      <h2><i class="fa fa-flask"></i> SQLAlchemy</h2>
-      <p>SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.</p>
-      <p><a href="http://www.sqlalchemy.org/" class="btn btn-outline-secondary">Official website &raquo;</a></p>
-   </div>
-    <div class="col-lg-4">
-      <h2><i class="fa fa-edit"></i> WTForms</h2>
-      <p>WTForms is a flexible forms validation and rendering library for python web development.</p>
-      <p><a href="http://wtforms.simplecodes.com/" class="btn btn-outline-secondary">Official website &raquo;</a></p>
-    </div>
-  </div><!-- /.row -->
+  </div>
 </div>
 {% endblock %}
-
