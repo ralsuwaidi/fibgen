@@ -8,10 +8,6 @@ html {
   overflow-y: scroll;
 }
 
-body {
-  padding-top: 60px;
-}
-
 section {
   overflow: auto;
 }
@@ -83,4 +79,25 @@ footer .footer-nav {
   float: right;
   margin-right: 25px;
   list-style: none;
+}
+
+.login-form {
+  width: 340px;
+    margin: 30px auto;
+}
+.login-form form {        
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}    
+.form-control, .btn {
+    height: 36px;
+    border-radius: 2px;
+}
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+.remember-me {
+    margin: 8px 0 0 12px;
 }
