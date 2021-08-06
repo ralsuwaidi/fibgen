@@ -41,3 +41,4 @@ environs==9.3.2
 
 # Custom
 requests
+beautifulsoup4
