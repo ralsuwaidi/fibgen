@@ -8,8 +8,6 @@ from subprocess import call
 import click
 from flask.cli import with_appcontext
 
-import autoapp
-from fibgen.user.forms import RegisterForm
 from fibgen.user.models import User
 
 HERE = os.path.abspath(os.path.dirname(__file__))
