@@ -4,9 +4,11 @@ import getpass
 import os
 from glob import glob
 from subprocess import call
-import autoapp
+
 import click
 from flask.cli import with_appcontext
+
+import autoapp
 from fibgen.user.forms import RegisterForm
 from fibgen.user.models import User
 
@@ -33,7 +35,7 @@ def create_user():
         )
         print("created {}".format(username))
     else:
-        print('password doesnt match')
+        print("password doesnt match")
 
 
 @click.command()

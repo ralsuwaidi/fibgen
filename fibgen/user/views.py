@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """User views."""
-from fibgen.books import scrape
 from flask import Blueprint, current_app, render_template, request
 from flask_login import login_required
+
+from fibgen.books import scrape
 
 from .forms import LibgenForm
 
