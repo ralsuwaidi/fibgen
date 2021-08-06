@@ -1,14 +1,39 @@
 # -*- coding: utf-8 -*-
 """Click commands."""
+import getpass
 import os
 from glob import glob
 from subprocess import call
-
+import autoapp
 import click
+from flask.cli import with_appcontext
+from fibgen.user.forms import RegisterForm
+from fibgen.user.models import User
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.join(HERE, os.pardir)
 TEST_PATH = os.path.join(PROJECT_ROOT, "tests")
+
+
+@click.command()
+@with_appcontext
+def create_user():
+    """Create user"""
+    username = input("username: ")
+    email = input("Email: ")
+    password = getpass.getpass(prompt="Password: ", stream=None)
+    confirm = getpass.getpass(prompt="Confirm password: ", stream=None)
+
+    if password == confirm:
+        User.create(
+            username=username,
+            email=email,
+            password=password,
+            active=True,
+        )
+        print("created {}".format(username))
+    else:
+        print('password doesnt match')
 
 
 @click.command()
