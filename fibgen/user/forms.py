@@ -43,3 +43,9 @@ class RegisterForm(FlaskForm):
             self.email.errors.append("Email already registered")
             return False
         return True
+
+
+class LibgenForm(FlaskForm):
+    """Search for a book form"""
+
+    book = StringField("Book", validators=[DataRequired(), Length(min=3, max=50)])

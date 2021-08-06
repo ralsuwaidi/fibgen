@@ -1,9 +1,41 @@
-
 {% extends "layout.html" %}
 {% block content %}
-    <div class="container">
-        <h1>Welcome {{ current_user.username }}</h1>
-        <h3>This is the members-only page.</h3>
-    </div>
-{% endblock %}
+<div class="container">
+    <h1>Welcome {{ current_user.username }}</h1>
+    <h3>This is the members-only page.</h3>
 
+    <form action="" method="post" , class="mb-2">
+        {{ form.hidden_tag() }}
+        <div class="input-group">
+            {{ form.book(class="form-control rounded", placeholder="Search", type="search")}}
+            <button type="submit" class="btn btn-outline-primary">search</button>
+        </div>
+    </form>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Series</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {%for book in books %}
+            <tr>
+                <th scope="row">{{book.number}}</th>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.series}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+</div>
+{% endblock %}
