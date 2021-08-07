@@ -38,6 +38,14 @@ docker-compose run --rm manage db upgrade
 
 A docker volume `node-modules` is created to store NPM packages and is reused across the dev and prod versions of the application. For the purposes of DB testing with `sqlite`, the file `dev.db` is mounted to all containers. This volume mount should be removed from `docker-compose.yml` if a production DB server is used.
 
+After setting up the database you need to create a user by running the following command
+
+```bash
+docker-compose run --rm manage create-user
+```
+
+Which will create a user for you so that you can log in.
+
 ### Running locally
 
 Run the following commands to bootstrap your environment if you are unable to run the application using Docker
