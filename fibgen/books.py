@@ -23,7 +23,7 @@ class Book:
         return f"{self.title}"
 
 
-def scrape(search, book_format="") -> List[Book]:
+def scrape(search, book_format="epub") -> List[Book]:
     """get all results from search"""
 
     # replace space with + in search

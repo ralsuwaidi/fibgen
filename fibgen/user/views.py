@@ -37,5 +37,5 @@ def download(book_no):
     global books
     current_app.logger.info(f"downloading book {books[book_no]}")
     current_app.logger.info(books[book_no].links[0])
-    download_book(books[book_no].links[0], dest=f"/watch/{books[book_no].title}.epub")
+    download_book(books[book_no].links[0], dest=f"/watch/")
     return redirect(url_for(".members"))
