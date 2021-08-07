@@ -67,6 +67,11 @@ def scrape(search, book_format="epub") -> List[Book]:
         libgen_table = soup.find("table")
         table_body = libgen_table.find("tbody")
 
+        # iterate over links
+        book_no = 0
+        # reset link in every new page
+        links = []
+
         # get links from website
         all_links = table_body.find_all("ul", {"class": "record_mirrors_compact"})
         for link in all_links:
@@ -84,8 +89,9 @@ def scrape(search, book_format="epub") -> List[Book]:
             cols.append(counter)
             counter += 1
             book_meta = [ele for ele in cols]
-            book = Book(*book_meta, links=links)
+            book = Book(*book_meta, links=links[book_no])
             book_list.append(book)
+            book_no += 1
 
     return book_list
 
@@ -106,10 +112,10 @@ def download_book(link, dest):
 
 
 if __name__ == "__main__":
-    search = "viriconium"
+    search = "the idiot"
     book_format = "epub"
 
     book_list = scrape(search, book_format)
 
     for book in book_list:
-        print(book)
+        print(book, book.links)
