@@ -1,6 +1,6 @@
 # fibgen
 
-A flask libgen resource colector
+A flask libgen resource collector
 
 ## Docker Quickstart
 
