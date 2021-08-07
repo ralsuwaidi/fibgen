@@ -20,6 +20,7 @@ services:
     image: "fibgen-development"
     depends_on:
       - "db"
+    user: "${UID}:${GID}" 
     ports:
       - "5000:5000"
       - "2992:2992"
@@ -34,6 +35,7 @@ services:
     image: "fibgen-production"
     depends_on:
       - "db"  
+    user: "${UID}:${GID}" 
     ports:
       - "5000:5000"
     environment:
@@ -50,6 +52,7 @@ services:
       args:
         <<: *build_args
     entrypoint: flask
+    user: "${UID}:${GID}" 
     environment:
       FLASK_ENV: production
       FLASK_DEBUG: 0
