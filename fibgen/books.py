@@ -4,6 +4,7 @@ from typing import List
 
 import requests
 from bs4 import BeautifulSoup
+import wget
 
 # Book = namedtuple("Book", "Author Series Title Language File Number")
 
@@ -87,6 +88,21 @@ def scrape(search, book_format="") -> List[Book]:
             book_list.append(book)
 
     return book_list
+
+
+def download_book(link, dest):
+
+    # parse website
+    r = requests.get(link)
+    soup = BeautifulSoup(r.text, "html.parser")
+
+    # parse link
+    link = soup.find_all("h2")
+    link = link[0].find("a")
+    link = link.get("href")
+
+    # download
+    wget.download(link, out=dest)
 
 
 if __name__ == "__main__":

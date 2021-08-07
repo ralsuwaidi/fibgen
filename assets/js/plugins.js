@@ -1,4 +1,6 @@
 // place any jQuery/helper plugins in here, instead of separate, slower script files.
+
+// makes search button have spinner
 $(document).ready(function () {
     $("#btnFetch").click(function () {
         // disable button
