@@ -3,8 +3,8 @@ from collections import namedtuple
 from typing import List
 
 import requests
-from bs4 import BeautifulSoup
 import wget
+from bs4 import BeautifulSoup
 
 # Book = namedtuple("Book", "Author Series Title Language File Number")
 

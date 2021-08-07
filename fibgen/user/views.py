@@ -5,8 +5,7 @@ from flask.helpers import flash, url_for
 from flask_login import login_required
 from werkzeug.utils import redirect
 
-
-from fibgen.books import scrape, download_book
+from fibgen.books import download_book, scrape
 
 from .forms import LibgenForm
 
