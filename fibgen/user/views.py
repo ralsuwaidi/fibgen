@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """User views."""
 from flask import Blueprint, current_app, render_template, request
-from flask.helpers import url_for
+from flask.helpers import flash, url_for
 from flask_login import login_required
 from werkzeug.utils import redirect
 
@@ -24,7 +24,11 @@ def members():
     books = []
     if request.method == "POST":
         books = scrape(form.book.data)
-        current_app.logger.info(books[0].links[0])
+        if len(books) != 0:
+            current_app.logger.info(books[0].links[0])
+        else:
+            current_app.logger.info("couldnt find any books")
+            flash("Couldnt find any books", category="error")
 
     return render_template(
         "users/members.html", title="Search book", form=form, books=books
@@ -36,6 +40,5 @@ def members():
 def download(book_no):
     global books
     current_app.logger.info(f"downloading book {books[book_no]}")
-    current_app.logger.info(books[book_no].links[0])
     download_book(books[book_no].links[0], dest=f"/watch/")
     return redirect(url_for(".members"))

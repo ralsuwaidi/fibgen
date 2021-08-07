@@ -1,27 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="container">
-
-
-    <h1>Welcome {{ current_user.username }}</h1>
-    <h3>This is the members-only page.</h3>
+<div class="container pt-5">
 
     <form action="" method="post" , class="mb-2">
         {{ form.hidden_tag() }}
         <div class="input-group">
-            {{ form.book(class="form-control rounded", placeholder="Search", type="search")}}
+            {{ form.book(class="form-control", placeholder="Search for a book", type="search")}}
             <button type="submit" id="btnFetch" class="btn btn-outline-primary" style="width: 5em;">search</button>
         </div>
     </form>
 
-    <!-- <div style="margin:3em;">
-        <form class="form-inline" id="topicForm" action="" method="POST">
-            <input type="text" id="inputTopic" name="topic" class="form-control mb-2 mr-sm-2"
-                placeholder="Topic of interest" required autofocus />
-            <button type="button" id="btnFetch" class="btn btn-primary mb-2">Submit</button>
-        </form>
-    </div> -->
-
+    {%if books%}
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -35,18 +24,17 @@
         <tbody>
 
             {%for book in books %}
-            <a href="google.com">
-                <tr>
-                    <th scope="row">{{book.number}}</th>
-                    <td>{{book.title}}</td>
-                    <td>{{book.author}}</td>
-                    <td>{{book.series}}</td>
-                    <td><a href="{{ url_for('user.download', book_no=book.number) }}">Download</a></td>
-                </tr>
-            </a>
+            <tr>
+                <th scope="row">{{book.number}}</th>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.series}}</td>
+                <td><a class="btn btn-link" href="{{ url_for('user.download', book_no=book.number) }}">Download</a></td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
+    {%endif%}
 
 
 
