@@ -28,7 +28,7 @@ def members():
             current_app.logger.info(books[0].links[0])
         else:
             current_app.logger.info("couldnt find any books")
-            flash("Couldnt find any books", category="error")
+            flash("Couldnt find any books", category="warning")
 
     return render_template(
         "users/members.html", title="Search book", form=form, books=books
@@ -41,4 +41,5 @@ def download(book_no):
     global books
     current_app.logger.info(f"downloading book {books[book_no]}")
     download_book(books[book_no].links[0], dest=f"/watch/")
+    flash(f"Successfully downloaded {books[book_no]}", category="success")
     return redirect(url_for(".members"))
